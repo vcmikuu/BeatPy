@@ -1,6 +1,7 @@
 import requests
 from typing import List, Dict, Union
 from .search import SearchAPI
+from .playlists import PlaylistsAPI
 from .exceptions import (
     BeatSaverError,
     BeatSaverNotFoundError,
@@ -9,13 +10,13 @@ from .exceptions import (
     BeatSaverServerError,
 )
 
-
 BASE_URL = "https://api.beatsaver.com"
 
 class BeatSaverAPI:
     def __init__(self):
         self.session = requests.Session()
         self.search = SearchAPI(self.session)
+        self.playlists = PlaylistsAPI(self.session)
 
     def _handle_response(self, response):
         """Handles HTTP response and raises appropriate exceptions."""
