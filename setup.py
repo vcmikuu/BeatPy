@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="beatpy",
-    version="0.1.1",
+    version="0.1.2",
     description="A Python wrapper for the BeatSaver API",
     author="laynia",
     author_email="vc.mikuu@outlook.jp",
