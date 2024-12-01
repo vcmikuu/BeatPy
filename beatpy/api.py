@@ -1,5 +1,6 @@
 import requests
 from typing import List, Dict, Union
+from .search import SearchAPI
 from .exceptions import (
     BeatSaverError,
     BeatSaverNotFoundError,
@@ -14,6 +15,7 @@ BASE_URL = "https://api.beatsaver.com"
 class BeatSaverAPI:
     def __init__(self):
         self.session = requests.Session()
+        self.search = SearchAPI(self.session)
 
     def _handle_response(self, response):
         """Handles HTTP response and raises appropriate exceptions."""
@@ -91,3 +93,5 @@ class BeatSaverAPI:
         """Verify user token."""
         response = self.session.post(f"{BASE_URL}/users/verify", json={"token": token})
         return self._handle_response(response)
+    
+
